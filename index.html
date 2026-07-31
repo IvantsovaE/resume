@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ekaterina Ivantsova — Frontend Developer. JavaScript, TypeScript, HTML, CSS.">
+    <meta name="theme-color" content="#0a0a0a">
+    
+    <meta property="og:title" content="Ekaterina Ivantsova — Frontend Developer">
+    <meta property="og:description" content="Portfolio of a frontend developer seeking an internship.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="photo.jpg">
+    
+    <title>Ekaterina Ivantsova — Frontend Developer</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="fade-in">
+        <div class="avatar">
+            <img src="photo.jpg" alt="Ekaterina Ivantsova" loading="lazy">
+        </div>
+        <h1>Ekaterina Ivantsova</h1>
+        <p class="subtitle">Frontend Developer</p>
+        
+        <nav class="contacts" aria-label="Contact links">
+            <a href="https://github.com/IvantsovaE" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://t.me/rin0czka" target="_blank" rel="noopener noreferrer">Telegram</a>
+            <button type="button" class="copy-btn" onclick="copyEmail(this)">Copy Email</button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="fade-in">
+            <h2>About Me</h2>
+            <p>
+                Transitioning into development from a related field. Currently advancing my skills in JavaScript and TypeScript through Skillbox courses. Seeking an internship where I can apply my knowledge to real-world tasks and grow under the guidance of a mentor.
+            </p>
+        </section>
+
+        <section class="fade-in">
+            <h2>Tech Stack</h2>
+            <div class="tags">
+                <span class="tag">HTML5</span>
+                <span class="tag">CSS3</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">TypeScript</span>
+                <span class="tag">Git</span>
+                <span class="tag">GitHub</span>
+                <span class="tag">VS Code</span>
+                <span class="tag">Responsive Design</span>
+                <span class="tag">REST API</span>
+                <span class="tag">React</span>
+            </div>
+        </section>
+
+        <section class="fade-in">
+            <h2>Projects</h2>
+            <article class="project-card">
+                <h3>Personal Portfolio</h3>
+                <p>Responsive resume website built from scratch. Stack: HTML5, CSS3, Flexbox.</p>
+                <div class="project-links">
+                    <a href="#" target="_blank" rel="noopener noreferrer">Live Demo</a>
+                    <span class="link-divider">|</span>
+                    <a href="https://github.com/IvantsovaE/portfolio" target="_blank" rel="noopener noreferrer">Source Code</a>
+                </div>
+            </article>
+        </section>
+
+        <section class="fade-in">
+            <h2>Education</h2>
+            <div class="education-item">
+                <p class="school">School of Business, Belarusian State University</p>
+                <p class="degree">Bachelor's Degree in Information Resources Management</p>
+                <p class="years">2022 – 2027 (expected)</p>
+            </div>
+        </section>
+
+        <section class="fade-in">
+            <h2>Certificates</h2>
+            <div class="cert-grid">
+                <button type="button" class="cert-item" onclick="openModal('cert/js.jpg')" aria-label="View JavaScript certificate">
+                    <div class="cert-thumb">
+                        <img src="cert/js.jpg" alt="JavaScript Certificate" loading="lazy">
+                    </div>
+                    <p class="cert-name">JavaScript — Skillbox</p>
+                    <span class="cert-date">June 2026</span>
+                </button>
+                
+                <button type="button" class="cert-item" onclick="openModal('cert/ts.jpg')" aria-label="View TypeScript certificate">
+                    <div class="cert-thumb">
+                        <img src="cert/ts.jpg" alt="TypeScript Certificate" loading="lazy">
+                    </div>
+                    <p class="cert-name">TypeScript — Skillbox</p>
+                    <span class="cert-date">July 2026</span>
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="fade-in">
+        <p>© 2026 Ekaterina Ivantsova</p>
+    </footer>
+
+    <!-- Modal -->
+    <div id="certModal" class="modal" role="dialog" aria-modal="true" aria-label="Certificate preview" onclick="closeModalOnBackdrop(event)">
+        <button type="button" class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
+        <div class="modal-img-wrapper" onclick="event.stopPropagation()">
+            <img class="modal-content" id="modalImg" alt="Certificate preview">
+        </div>
+    </div>
+
+    <script>
+        function openModal(src) {
+            const modal = document.getElementById('certModal');
+            document.getElementById('modalImg').src = src;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('certModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function closeModalOnBackdrop(event) {
+            if (event.target === event.currentTarget) closeModal();
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        function copyEmail(btn) {
+            const email = 'ivancovaekaterina78@gmail.com';
+            navigator.clipboard.writeText(email).then(() => {
+                const original = btn.textContent;
+                btn.textContent = 'Copied!';
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    btn.textContent = original;
+                    btn.classList.remove('copied');
+                }, 2000);
+            }).catch(() => {
+                window.location.href = 'mailto:' + email;
+            });
+        }
+    </script>
+</body>
+</html>
